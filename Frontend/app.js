@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('loadingSpinner').classList.remove('hidden');
 
         try {
-            const response = await fetch('https://deed-defender.onrender.com/api/scan', {
+            const response = await fetch('https://api-backend-c8pk.onrender.com/api/scan', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ documentData: text }) // Correctly defining the body
