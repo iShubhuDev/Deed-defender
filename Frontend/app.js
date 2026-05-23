@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const scanBtn = document.getElementById('scanBtn');
     
+    // This listener replaces the need for 'onclick' in your HTML
     scanBtn.addEventListener('click', async () => {
         const text = document.getElementById('contractInput').value;
         if (!text) return alert("Please paste a document.");
@@ -20,11 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             
-            // Populate the UI
+            // Populate the UI with data from backend
             document.getElementById('safetyScore').innerText = data.score;
             document.getElementById('verdictText').innerText = data.verdict;
             
-            // Helper to fill lists
             const fillList = (id, items, countId) => {
                 const list = document.getElementById(id);
                 list.innerHTML = items.map(i => `<li>🔹 ${i}</li>`).join('');
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fillList('mediumRiskList', data.mediumRisk, 'mediumCount');
             fillList('lowRiskList', data.lowRisk, 'lowCount');
 
-            // Hide loading, show results
+            // Final reveal
             document.getElementById('loadingSpinner').classList.add('hidden');
             document.getElementById('resultsPanel').classList.remove('hidden');
         } catch (err) {
