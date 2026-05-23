@@ -53,7 +53,7 @@ async function processContractScan() {
         }
 
         // Send payload directly to our local port 5000 server instance
-        const response = await fetch('http://localhost:5000/api/scan', {
+        const response = await fetch('https://deed-defender.onrender.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
