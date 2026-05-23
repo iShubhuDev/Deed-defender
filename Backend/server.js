@@ -64,3 +64,23 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+app.post('/api/scan', async (req, res) => {
+    try {
+        const { documentData } = req.body;
+        if (!documentData) return res.status(400).json({ error: "Missing data" });
+
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const result = await model.generateContent("Analyze: " + documentData);
+        
+        // Ensure you return JSON. 
+        // If your AI prompt returns markdown, strip it first:
+        const rawText = result.response.text().replace(/```json|```/g, '');
+        const jsonResponse = JSON.parse(rawText);
+        
+        res.json(jsonResponse);
+    } catch (error) {
+        console.error(error); // This will show you the exact error in your Render logs
+        res.status(500).json({ error: "Server error" });
+    }
+});
