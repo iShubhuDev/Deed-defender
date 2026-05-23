@@ -26,8 +26,8 @@ app.post('/api/scan', async (req, res) => {
             return res.status(400).json({ error: "No document data provided" });
         }
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
+        
         // Prompting the AI to return structured JSON
         const prompt = `Analyze the following legal document for traps, risks, and standard clauses. 
         Return your analysis ONLY as a valid JSON object with exactly this format:
