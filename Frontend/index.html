@@ -15,86 +15,43 @@
 
         <main>
             <section class="input-panel">
-                <textarea id="contractInput" placeholder="Paste the full text of your legal document, lease, deed, or terms of service agreement here..."></textarea>
-                
-                <div class="file-upload-container">
-                    <label for="fileInput">
-                        📁 <strong>Or upload a document file instead:</strong>
-                    </label>
-                    <input type="file" id="fileInput" accept=".pdf,image/*">
-                </div>
-
-                <button id="scanBtn" onclick="processContractScan()">Analyze Document Structure</button>
+                <textarea id="contractInput" placeholder="Paste the full text of your legal document here..."></textarea>
+                <button id="scanBtn">Analyze Document Structure</button>
             </section>
 
             <div id="loadingSpinner" class="spinner hidden">
-                <div class="loader"></div>
-                <p>AI engine compiling clauses... checking for predatory frameworks...</p>
+                <p>AI engine compiling clauses...</p>
             </div>
 
             <section id="resultsPanel" class="results-panel hidden">
                 <div class="dashboard-header">
-                    <div class="score-container">
-                        <div class="score-circle">
-                            <span id="safetyScore">100</span>
-                            <span class="score-label">SAFETY SCORE</span>
-                        </div>
+                    <div class="score-circle">
+                        <span id="safetyScore">100</span>
+                        <span class="score-label">SAFETY SCORE</span>
                     </div>
                     <div class="verdict-container">
                         <h2>Analysis Verdict</h2>
-                        <p id="verdictText">Document status clear.</p>
+                        <p id="verdictText"></p>
                     </div>
                 </div>
 
                 <div class="matrix-grid">
-                    <div class="matrix-card high-risk-card">
-                        <h3>🔴 Severe Traps & Liabilities (<span id="highCount">0</span>)</h3>
+                    <div class="matrix-card">
+                        <h3>🔴 Severe Traps (<span id="highCount">0</span>)</h3>
                         <ul id="highRiskList"></ul>
                     </div>
-
-                    <div class="matrix-card medium-risk-card">
-                        <h3>🟡 Unfavorable Clauses (<span id="mediumCount">0</span>)</h3>
+                    <div class="matrix-card">
+                        <h3>🟡 Unfavorable (<span id="mediumCount">0</span>)</h3>
                         <ul id="mediumRiskList"></ul>
                     </div>
-
-                    <div class="matrix-card low-risk-card">
-                        <h3>🟢 Safe / Standard Clauses (<span id="lowCount">0</span>)</h3>
+                    <div class="matrix-card">
+                        <h3>🟢 Standard Clauses (<span id="lowCount">0</span>)</h3>
                         <ul id="lowRiskList"></ul>
                     </div>
                 </div>
             </section>
-
-            <section class="safety-guide-panel">
-                <h2>Understanding DeedDefend Safety Levels</h2>
-                <p class="guide-intro">Our AI advocate analyzes contracts based on how much legal control and financial freedom you retain.</p>
-                
-                <div class="guide-grid">
-                    <div class="guide-card zone-green">
-                        <div class="zone-badge">80 - 100</div>
-                        <h3>🟢 Safe Zone (Low Risk)</h3>
-                        <p>The contract is fair, consumer-friendly, and standard. It protects your rights and contains no malicious tricks or hidden financial traps.</p>
-                    </div>
-
-                    <div class="guide-card zone-yellow">
-                        <div class="zone-badge">50 - 79</div>
-                        <h3>🟡 Caution Zone (Medium Risk)</h3>
-                        <p>Contains common but aggressive business clauses. Watch out for standard automatic renewals, data collection, and limits on company liability.</p>
-                    </div>
-
-                    <div class="guide-card zone-red">
-                        <div class="zone-badge">1 - 49</div>
-                        <h3>🔴 Danger Zone (High Risk)</h3>
-                        <p>Hostile framework designed to strip away your legal rights. Includes forced private arbitration, content theft, or predatory billing tricks.</p>
-                    </div>
-                </div>
-            </section>
         </main>
-
-        <footer>
-            <p>&copy; 2026 Shubhu Development Inc. All rights reserved.</p>
-        </footer>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>
